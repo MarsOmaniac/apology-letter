@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Apology</title>
+    <style>
+        body {
+            background-color: #f7f4eb;
+            font-family: 'Georgia', serif;
+            color: #4b4a47;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2021/09/16/1518780/7ba5a77e3882b4f97482ecdd5a5f62b7.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 30px 50px;
+            width: 90%;
+            max-width: 750px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: fadeIn 2s ease-out;
+            overflow-y: auto;
+            height: 85vh;
+            scroll-behavior: smooth;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #5f4b8b;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            font-size: 1.2em;
+            line-height: 1.8em;
+            color: #4b4a47;
+            margin: 20px 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #5f4b8b;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 30px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #9c85d1;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .celebration-message {
+            display: none;
+            margin-top: 20px;
+            background-color: #d1c0eb;
+            padding: 20px;
+            color: #fff;
+            font-size: 1.3em;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        .celebration-message.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .footer {
+            font-size: 1.1em;
+            margin-top: 30px;
+            color: #5f4b8b;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: red;
+            opacity: 0.7;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            animation: confetti-fall 1.5s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(200px) rotate(720deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My Apology</h1>
+
+        <div class="content" id="letter">
+            <p>Dear Malu,</p>
+            <p>With a heart heavy with regret, I write to you today. I have come to realize that I have made an unforgivable mistake, and in doing so, I have caused a rift in our bond, a bond that meant more to me than words can describe.</p>
+            <p>I cannot sleep. Every moment that passes, I am consumed by the thought of what I have done. My actions were thoughtless, and I am burdened by the distance I have created between us. I can only wish for the chance to make amends, to return to the friendship that once brought me joy.</p>
+            <p>But I know that such things are not so easily repaired. Perhaps I do not deserve the forgiveness I so desperately seek, but I cannot help but hope that, in time, you may find it in your heart to forgive me.</p>
+            <p>Until then, I remain your friend, sincerely and truly regretful.</p>
+            <p>- Mahi</p>
+        </div>
+
+        <div class="button-container">
+            <button id="celebrateButton" onclick="showCelebration()">Apology Granted</button>
+        </div>
+
+        <div class="celebration-message" id="celebrationMessage">
+            <p>Thank you...</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>With heartfelt sincerity, Mahi</p>
+    </div>
+
+    <script>
+        function showCelebration() {
+            document.getElementById('celebrationMessage').classList.add('show');
+            document.getElementById('celebrateButton').style.display = 'none';
+            triggerConfetti();
+        }
+
+        function triggerConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = getRandomColor();
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.top = Math.random() * 50 + "vh";
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        function getRandomColor() {
+            let colors = ["#ff4757", "#ffa502", "#2ed573", "#1e90ff", "#ff6b81", "#3742fa"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+
+</body>
+</html>
